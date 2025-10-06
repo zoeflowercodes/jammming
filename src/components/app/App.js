@@ -16,17 +16,18 @@ function App() {
         tracks: [
             {id: 4, name: "You're On Your Own, Kid", artist: "Taylor Swift", album: "Midnights"},
             {id: 5, name: "You're Gonna Go Far", artist: "Noah Kahan", album: "Stick Season (We'll All Be Here Forever)"},
-            {id: 1, name: "You Know I'm No Good", artist: "Amy Winehouse", album: "Back To Black (Deluxe Edition)"}
+            {id: 6, name: "You Know I'm No Good", artist: "Amy Winehouse", album: "Back To Black (Deluxe Edition)"}
         ]
     };
     const [searchResults, setSearchResults] = useState(hardCodedSearchResults);
     const [playlist, setPlaylist] = useState(hardCodedPlaylist);
     function addToPlaylist(track) {
-        console.log("Add song to playlist:", track.name)
-        setPlaylist(prev => ({
-            ...prev,
-            tracks: [...prev.tracks, track]
-        }));
+        if (!playlist.tracks.find(t => t.id === track.id)) {
+            setPlaylist(prev => ({
+                ...prev,
+                tracks: [...prev.tracks, track]
+            }));
+        }
     }
   return (
     <div className="App">
