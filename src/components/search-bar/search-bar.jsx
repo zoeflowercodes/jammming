@@ -1,11 +1,21 @@
+import React, { useState } from "react";
 
+function SearchBar(props) {
+    const [term, setTerm] = useState("");
 
-function SearchBar() {
-    const searchBarName = "My SearchBar";
+    function handleChange(event) {
+        setTerm(event.target.value);
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault(); // prevent page reload
+        props.onSearch(term);
+    }
     return (
-        <div>
-            {searchBarName}
-        </div>
+        <form onSubmit={handleSubmit}>
+            <input type="text" placeholder="Enter A Song, Album, or Artist" onChange={handleChange}/>
+            <button type="submit" >Search</button>
+        </form>
 
     )
 }

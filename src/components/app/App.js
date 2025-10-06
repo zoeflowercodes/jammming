@@ -4,12 +4,15 @@ import SearchBar from '../search-bar/search-bar';
 import SearchResults from '../search-results/search-results';
 import Playlist from '../playlist/playlist';
 import { redirectToSpotifyAuth, getAccessToken } from '../../api/spotify/spotifyAuth';
+import {searchTracks} from "../../api/spotify/spotifyApi";
 
 function App() {
     const [token, setToken] = useState(null);
 
     useEffect(() => {
-        getAccessToken().then(setToken);
+        getAccessToken().then(t => {
+            setToken(t);
+        });
     }, []);
 
     const hardCodedSearchResults = [
@@ -27,6 +30,7 @@ function App() {
     };
     const [searchResults, setSearchResults] = useState(hardCodedSearchResults);
     const [playlist, setPlaylist] = useState(hardCodedPlaylist);
+
     function addToPlaylist(track) {
         if (!playlist.tracks.find(t => t.id === track.id)) {
             setPlaylist(prev => ({
@@ -61,23 +65,32 @@ function App() {
         }
     }
 
-  return (
-    <div className="App">
-          <div>
-             <h1>Spotify Auth with PKCE</h1>
-              {!token && <button onClick={redirectToSpotifyAuth}>Log in with Spotify</button>}
-             {token && <p>Access token: {token}</p>}
-          </div>
-          <SearchBar />
-          <SearchResults searchResults={searchResults} onAddToPlaylist={addToPlaylist}/>
-          <Playlist
-              playlist={playlist}
-              onRemoveFromPlaylist={removeFromPlaylist}
-              onUpdatePlaylistName={updatePlaylistName}
-              onSavePlaylist={savePlaylist}
-          />
-    </div>
-  );
+    async function handleSearch(term) {
+        const result = await searchTracks(token, term)
+        setSearchResults(result);
+    }
+
+    return (
+        <div className="App">
+            {!token ? (
+                <div>
+                    <h1>Spotify Auth with PKCE</h1>
+                    <button onClick={redirectToSpotifyAuth}>Log in with Spotify</button>
+                </div>
+            ) : (
+                <>
+                    <SearchBar onSearch={handleSearch}/>
+                    <SearchResults searchResults={searchResults} onAddToPlaylist={addToPlaylist} />
+                    <Playlist
+                        playlist={playlist}
+                        onRemoveFromPlaylist={removeFromPlaylist}
+                        onUpdatePlaylistName={updatePlaylistName}
+                        onSavePlaylist={savePlaylist}
+                    />
+                </>
+            )}
+        </div>
+    );
 }
 
 export default App;
