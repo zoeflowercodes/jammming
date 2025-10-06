@@ -1,11 +1,17 @@
-import logo from '../../logo.svg';
 import './App.css';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchBar from '../search-bar/search-bar';
 import SearchResults from '../search-results/search-results';
 import Playlist from '../playlist/playlist';
+import { redirectToSpotifyAuth, getAccessToken } from '../../api/spotify/spotifyAuth';
 
 function App() {
+    const [token, setToken] = useState(null);
+
+    useEffect(() => {
+        getAccessToken().then(setToken);
+    }, []);
+
     const hardCodedSearchResults = [
         { id: 1, name: "When Did You Get Hot?", artist: "Sabrina Carpenter", album: "Man's Best Friend" },
         { id: 2, name: "When We Were Young", artist: "Adele", album: "25" },
@@ -57,6 +63,11 @@ function App() {
 
   return (
     <div className="App">
+          <div>
+             <h1>Spotify Auth with PKCE</h1>
+              {!token && <button onClick={redirectToSpotifyAuth}>Log in with Spotify</button>}
+             {token && <p>Access token: {token}</p>}
+          </div>
           <SearchBar />
           <SearchResults searchResults={searchResults} onAddToPlaylist={addToPlaylist}/>
           <Playlist
