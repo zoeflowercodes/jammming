@@ -5,7 +5,7 @@ function SearchResults(props) {
     const searchResults = props.searchResults || []
     return (
         <>
-            <h1>{title}</h1>
+            <h1>{props.showTitle && title}</h1>
             <TrackList trackList={searchResults} hasAddButton={true} onAddToPlaylist={props.onAddToPlaylist}/>
         </>
     )

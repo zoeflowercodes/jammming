@@ -15,11 +15,6 @@ function App() {
         });
     }, []);
 
-    const hardCodedSearchResults = [
-        { id: 1, name: "When Did You Get Hot?", artist: "Sabrina Carpenter", album: "Man's Best Friend" },
-        { id: 2, name: "When We Were Young", artist: "Adele", album: "25" },
-        { id: 3, name: "when the party's over", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?" },
-    ];
     const hardCodedPlaylist = {
         name: "My Playlist",
         tracks: [
@@ -28,7 +23,7 @@ function App() {
             {id: 6, name: "You Know I'm No Good", artist: "Amy Winehouse", album: "Back To Black (Deluxe Edition)"}
         ]
     };
-    const [searchResults, setSearchResults] = useState(hardCodedSearchResults);
+    const [searchResults, setSearchResults] = useState([]);
     const [playlist, setPlaylist] = useState(hardCodedPlaylist);
 
     function addToPlaylist(track) {
@@ -80,7 +75,7 @@ function App() {
             ) : (
                 <>
                     <SearchBar onSearch={handleSearch}/>
-                    <SearchResults searchResults={searchResults} onAddToPlaylist={addToPlaylist} />
+                    <SearchResults showTitle={searchResults.length !== 0} searchResults={searchResults} onAddToPlaylist={addToPlaylist} />
                     <Playlist
                         playlist={playlist}
                         onRemoveFromPlaylist={removeFromPlaylist}
