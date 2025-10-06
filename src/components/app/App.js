@@ -11,7 +11,16 @@ function App() {
         { id: 2, name: "Track 2", artist: "Track 2", album: "Track 2" },
         { id: 3, name: "Track 3", artist: "Track 3", album: "Track 3" },
     ];
+    const hardCodedPlaylist = {
+        name: "My Playlist",
+        tracks: [
+            {id: 4, name: "Track 4", artist: "Track 4", album: "Track 4"},
+            {id: 5, name: "Track 5", artist: "Track 5", album: "Track 5"},
+            {id: 1, name: "Track 1", artist: "Track 1", album: "Track 1"}
+        ]
+    };
     const [searchResults, setSearchResults] = useState(hardCodedSearchResults);
+    const [playlist, setPlaylist] = useState(hardCodedPlaylist);
   return (
     <div className="App">
       <header className="App-header">
@@ -29,7 +38,7 @@ function App() {
         </a>
           <SearchBar />
           <SearchResults searchResults={searchResults} />
-          <Playlist />
+          <Playlist playlist={playlist} />
       </header>
     </div>
   );
