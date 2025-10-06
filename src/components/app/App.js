@@ -29,11 +29,19 @@ function App() {
             }));
         }
     }
+    function removeFromPlaylist(track) {
+        if (playlist.tracks.find(t => t.id === track.id)) {
+            setPlaylist(prev => ({
+                ...prev,
+                tracks: [...prev.tracks.filter(t => t.id !== track.id)]
+            }));
+        }
+    }
   return (
     <div className="App">
           <SearchBar />
           <SearchResults searchResults={searchResults} onAddToPlaylist={addToPlaylist}/>
-          <Playlist playlist={playlist} />
+          <Playlist playlist={playlist} onRemoveFromPlaylist={removeFromPlaylist} />
     </div>
   );
 }

@@ -6,7 +6,7 @@ function Playlist(props) {
     return (
         <>
             <h1>{title}</h1>
-            <TrackList trackList={playlist.tracks} />
+            <TrackList trackList={playlist.tracks} hasDeleteButton={true} onRemoveFromPlaylist={props.onRemoveFromPlaylist} />
             <button>Save to Spotify</button>
         </>
     )
