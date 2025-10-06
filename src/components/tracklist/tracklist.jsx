@@ -1,7 +1,6 @@
 import Track from '../track/track';
 
 function TrackList(props) {
-    const title = "Song List";
     const trackList = props.trackList || [];
     const showAddButton = props.hasAddButton || false;
     const showDeleteButton = props.hasDeleteButton || false;
@@ -14,7 +13,6 @@ function TrackList(props) {
     ));
     return (
         <>
-            <h2>{title}</h2>
             {tracks}
         </>
     )

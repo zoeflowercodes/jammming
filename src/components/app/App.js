@@ -45,6 +45,16 @@ function App() {
         }));
     }
 
+    function savePlaylist() {
+        const trackCollection = playlist.tracks.map(track => track.id);
+        console.log(trackCollection);
+        if (trackCollection.length != 0) {
+            setPlaylist({name: "New Playlist", tracks: []});
+        } else {
+            alert("Your playlist is empty!");
+        }
+    }
+
   return (
     <div className="App">
           <SearchBar />
@@ -53,6 +63,7 @@ function App() {
               playlist={playlist}
               onRemoveFromPlaylist={removeFromPlaylist}
               onUpdatePlaylistName={updatePlaylistName}
+              onSavePlaylist={savePlaylist}
           />
     </div>
   );
