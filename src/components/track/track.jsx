@@ -1,11 +1,9 @@
 function Track(props) {
     const track = props.track;
-    const trackName = "My Track";
     return (
         <div>
-            {trackName}
-            {track.name}
-            {track.artist}
+            {track.name} <br/>
+            {track.artist} <br/>
             {track.album}
         </div>
     )

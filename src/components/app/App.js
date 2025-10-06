@@ -7,39 +7,32 @@ import Playlist from '../playlist/playlist';
 
 function App() {
     const hardCodedSearchResults = [
-        { id: 1, name: "Track 1", artist: "Track 1", album: "Track 1" },
-        { id: 2, name: "Track 2", artist: "Track 2", album: "Track 2" },
-        { id: 3, name: "Track 3", artist: "Track 3", album: "Track 3" },
+        { id: 1, name: "When Did You Get Hot?", artist: "Sabrina Carpenter", album: "Man's Best Friend" },
+        { id: 2, name: "When We Were Young", artist: "Adele", album: "25" },
+        { id: 3, name: "when the party's over", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?" },
     ];
     const hardCodedPlaylist = {
         name: "My Playlist",
         tracks: [
-            {id: 4, name: "Track 4", artist: "Track 4", album: "Track 4"},
-            {id: 5, name: "Track 5", artist: "Track 5", album: "Track 5"},
-            {id: 1, name: "Track 1", artist: "Track 1", album: "Track 1"}
+            {id: 4, name: "You're On Your Own, Kid", artist: "Taylor Swift", album: "Midnights"},
+            {id: 5, name: "You're Gonna Go Far", artist: "Noah Kahan", album: "Stick Season (We'll All Be Here Forever)"},
+            {id: 1, name: "You Know I'm No Good", artist: "Amy Winehouse", album: "Back To Black (Deluxe Edition)"}
         ]
     };
     const [searchResults, setSearchResults] = useState(hardCodedSearchResults);
     const [playlist, setPlaylist] = useState(hardCodedPlaylist);
+    function addToPlaylist(track) {
+        console.log("Add song to playlist:", track.name)
+        setPlaylist(prev => ({
+            ...prev,
+            tracks: [...prev.tracks, track]
+        }));
+    }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
           <SearchBar />
-          <SearchResults searchResults={searchResults} />
+          <SearchResults searchResults={searchResults} onAddToPlaylist={addToPlaylist}/>
           <Playlist playlist={playlist} />
-      </header>
     </div>
   );
 }
