@@ -1,11 +1,15 @@
 import Track from '../track/track';
 
-function TrackList() {
+function TrackList(props) {
     const trackListName = "My TrackList";
+    const trackList = props.trackList || [];
+    const tracks = trackList.map(track => (
+        <Track key={track.id} track={track} />
+    ));
     return (
         <div>
             {trackListName}
-            <Track/>
+            {tracks}
         </div>
     )
 }

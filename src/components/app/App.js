@@ -1,10 +1,17 @@
 import logo from '../../logo.svg';
 import './App.css';
+import { useState } from 'react';
 import SearchBar from '../search-bar/search-bar';
 import SearchResults from '../search-results/search-results';
 import Playlist from '../playlist/playlist';
 
 function App() {
+    const hardCodedSearchResults = [
+        { id: 1, name: "Track 1", artist: "Track 1", album: "Track 1" },
+        { id: 2, name: "Track 2", artist: "Track 2", album: "Track 2" },
+        { id: 3, name: "Track 3", artist: "Track 3", album: "Track 3" },
+    ];
+    const [searchResults, setSearchResults] = useState(hardCodedSearchResults);
   return (
     <div className="App">
       <header className="App-header">
@@ -21,7 +28,7 @@ function App() {
           Learn React
         </a>
           <SearchBar />
-          <SearchResults />
+          <SearchResults searchResults={searchResults} />
           <Playlist />
       </header>
     </div>

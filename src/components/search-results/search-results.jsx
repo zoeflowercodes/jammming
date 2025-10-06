@@ -1,11 +1,12 @@
 import TrackList from "../tracklist/tracklist";
+import { useState } from "react";
 
-function SearchResults() {
+function SearchResults(props) {
     const searchResultsName = "My SearchResults";
     return (
         <div>
             {searchResultsName}
-            <TrackList/>
+            <TrackList trackList={props.searchResults} />
         </div>
     )
 }
