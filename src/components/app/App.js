@@ -37,11 +37,23 @@ function App() {
             }));
         }
     }
+
+    function updatePlaylistName(name) {
+        setPlaylist(prev => ({
+            ...prev,
+            name: name
+        }));
+    }
+
   return (
     <div className="App">
           <SearchBar />
           <SearchResults searchResults={searchResults} onAddToPlaylist={addToPlaylist}/>
-          <Playlist playlist={playlist} onRemoveFromPlaylist={removeFromPlaylist} />
+          <Playlist
+              playlist={playlist}
+              onRemoveFromPlaylist={removeFromPlaylist}
+              onUpdatePlaylistName={updatePlaylistName}
+          />
     </div>
   );
 }
