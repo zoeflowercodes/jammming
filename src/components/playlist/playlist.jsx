@@ -1,4 +1,5 @@
 import TrackList from "../tracklist/tracklist";
+import './playlist.module.css';
 
 function Playlist(props) {
     const playlist = props.playlist || { name: '', tracks: [] };
@@ -6,7 +7,7 @@ function Playlist(props) {
         props.onUpdatePlaylistName(e.target.value);
     }
     return (
-        <>
+        <div className="playlist">
             <h1>{playlist.name}</h1>
             <form onSubmit={e => e.preventDefault()}>
                 <input
@@ -18,7 +19,7 @@ function Playlist(props) {
             </form>
             <TrackList trackList={playlist.tracks} hasDeleteButton={true} onRemoveFromPlaylist={props.onRemoveFromPlaylist} />
             {playlist.tracks.length !== 0 && (<button onClick={props.onSavePlaylist}>Save to Spotify</button>)}
-        </>
+        </div>
     )
 }
 

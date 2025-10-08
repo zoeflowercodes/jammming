@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './search-bar.module.css';
 
 function SearchBar(props) {
     const [term, setTerm] = useState("");
@@ -12,7 +13,7 @@ function SearchBar(props) {
         event.preventDefault();
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="search-bar" onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder="Enter A Song, Album, or Artist"

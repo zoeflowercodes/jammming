@@ -1,0 +1,35 @@
+.track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e1e;
+    padding: 10px 15px;
+    border-radius: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.track:hover {
+    background-color: #282828;
+}
+
+.track-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.track button {
+    background-color: transparent;
+    color: #1DB954;
+    font-weight: bold;
+    border: 1px solid #1DB954;
+    padding: 5px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.track button:hover {
+    background-color: #1DB954;
+    color: #fff;
+}

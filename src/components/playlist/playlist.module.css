@@ -1,0 +1,21 @@
+.playlist {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.playlist input[type="text"] {
+    width: 300px;
+    max-width: 80%;
+    font-size: 16px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    border: 1px solid #333;
+}
+
+.playlist button {
+    margin-top: 10px;
+    padding: 10px 25px;
+    font-size: 16px;
+    border-radius: 25px;
+}
