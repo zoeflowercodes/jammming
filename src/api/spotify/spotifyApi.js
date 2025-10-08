@@ -41,7 +41,6 @@ export async function getUser(token) {
     }
 
     const data = await response.json();
-    console.log("me:", data);
     return data;
 
 }
@@ -73,32 +72,32 @@ export async function createNewPlaylist(token, name) {
     }
 
     const data = await response.json();
-
     console.log('Created new playlist called:', data.name);
+    return data;
 }
 
-// export async function saveTrackToPlaylist(user_id, playlist_id, token, query) {
-//     const url = `https://api.spotify.com//v1/users/${user_id}/playlists/${playlist_id}/tracks`;
-//     if (!token) return [];
-//     const response = await fetch(
-//         url,
-//         {
-//             headers: { Authorization: `Bearer ${token}` },
-//             method: 'POST',
-//             body: JSON.stringify({
-//                 trackId: query.id,
-//                 description: 'New playlist description',
-//                 public: false
-//             })
-//         }
-//     );
-//
-//     if (!response.ok) {
-//         console.error('Spotify search failed', await response.text());
-//         return [];
-//     }
-//
-//     const data = await response.json();
-//
-//     console.log('save playlist:', data);
-// }
+export async function saveTrackToPlaylist(token, query) {
+    const playlist = await createNewPlaylist(token, query.name);
+    const playlistId = playlist.id;
+    const trackUris = query.tracks.map(track => track.uri);
+    const url = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`;
+    if (!token) return [];
+    const response = await fetch(
+        url,
+        {
+            headers: { Authorization: `Bearer ${token}` },
+            method: 'POST',
+            body: JSON.stringify({
+                uris: trackUris,
+                position: 0,
+            })
+        }
+    );
+
+    if (!response.ok) {
+        console.error('Spotify search failed', await response.text());
+        return [];
+    }
+
+    const data = await response.json();
+}

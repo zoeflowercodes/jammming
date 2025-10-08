@@ -17,7 +17,7 @@ function Playlist(props) {
                 />
             </form>
             <TrackList trackList={playlist.tracks} hasDeleteButton={true} onRemoveFromPlaylist={props.onRemoveFromPlaylist} />
-            <button onClick={props.onSavePlaylist}>Save to Spotify</button>
+            {playlist.tracks.length !== 0 && (<button onClick={props.onSavePlaylist}>Save to Spotify</button>)}
         </>
     )
 }

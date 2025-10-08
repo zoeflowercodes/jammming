@@ -5,8 +5,8 @@ function TrackList(props) {
     const showAddButton = props.hasAddButton || false;
     const showDeleteButton = props.hasDeleteButton || false;
     const tracks = trackList.map(track => (
-        <div>
-            <Track key={track.id} track={track} />
+        <div key={track.id} >
+            <Track track={track} />
             {showAddButton && <button onClick={() => props.onAddToPlaylist(track)}>Add to Playlist</button>}
             {showDeleteButton && <button onClick={() => props.onRemoveFromPlaylist(track)}>Remove from Playlist</button>}
         </div>

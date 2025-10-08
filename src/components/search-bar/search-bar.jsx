@@ -4,17 +4,21 @@ function SearchBar(props) {
     const [term, setTerm] = useState("");
 
     function handleChange(event) {
-        setTerm(event.target.value);
+        const value = event.target.value;
+        setTerm(value);
+        props.onSearch(value);
     }
-
     function handleSubmit(event) {
-        event.preventDefault(); // prevent page reload
-        props.onSearch(term);
+        event.preventDefault();
     }
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Enter A Song, Album, or Artist" onChange={handleChange}/>
-            <button type="submit" >Search</button>
+            <input
+                type="text"
+                placeholder="Enter A Song, Album, or Artist"
+                value={term}
+                onChange={handleChange}
+            />
         </form>
 
     )
