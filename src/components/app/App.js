@@ -4,7 +4,7 @@ import SearchBar from '../search-bar/search-bar';
 import SearchResults from '../search-results/search-results';
 import Playlist from '../playlist/playlist';
 import { redirectToSpotifyAuth, getAccessToken } from '../../api/spotify/spotifyAuth';
-import {searchTracks} from "../../api/spotify/spotifyApi";
+import {createNewPlaylist, getUser, searchTracks} from "../../api/spotify/spotifyApi";
 
 function App() {
     const [token, setToken] = useState(null);
@@ -35,6 +35,7 @@ function App() {
         }
     }
     function removeFromPlaylist(track) {
+        getUser(token).then(r => { console.log(r) });
         if (playlist.tracks.find(t => t.id === track.id)) {
             setPlaylist(prev => ({
                 ...prev,
@@ -52,7 +53,9 @@ function App() {
 
     function savePlaylist() {
         const trackCollection = playlist.tracks.map(track => track.id);
-        console.log(trackCollection);
+        console.log("trackCollection");
+        createNewPlaylist(token, playlist.name).then(r => { console.log(r) });
+        console.log("playlist.tracks");
         if (trackCollection.length != 0) {
             setPlaylist({name: "New Playlist", tracks: []});
         } else {

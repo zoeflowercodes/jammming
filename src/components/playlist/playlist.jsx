@@ -11,6 +11,7 @@ function Playlist(props) {
             <form onSubmit={e => e.preventDefault()}>
                 <input
                     type="text"
+                    placeholder="Enter Playlist Name"
                     value={playlist.name}
                     onChange={handlePlaylistNameChange}
                 />

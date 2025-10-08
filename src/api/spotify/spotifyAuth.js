@@ -1,6 +1,12 @@
 var clientId = '5aaa416cb4d14ae3ac7b2c2fb4b4a991';
 const redirectUri = "http://127.0.0.1:3000/";
-const scopes = ['user-read-private', 'user-read-email'];
+const scopes = [
+    'user-read-private',
+    'user-read-email',
+    'playlist-modify-private',
+    'playlist-modify-public'
+];
+
 
 // Utility to create a random string
 function generateRandomString(length) {
