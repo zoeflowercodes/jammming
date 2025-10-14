@@ -7,7 +7,11 @@ function SearchResults(props) {
     return (
         <div className="search-results">
             <h1>{props.showTitle && title}</h1>
-            <TrackList trackList={searchResults} hasAddButton={true} onAddToPlaylist={props.onAddToPlaylist}/>
+            <TrackList
+                trackList={searchResults}
+                hasAddButton={true}
+                onAddToPlaylist={props.onAddToPlaylist}
+            />
         </div>
     )
 }

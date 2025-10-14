@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/src/integration-tests/search-flow.test.js">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/integration-tests/search-flow.test.js" />
+              <option name="updatedContent" value="describe('Search Flow', () =&gt; {&#10;    test('placeholder', () =&gt; {&#10;        // empty test&#10;    });&#10;});&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
