@@ -4,7 +4,7 @@ import SearchBar from '../search-bar/search-bar';
 import SearchResults from '../search-results/search-results';
 import Playlist from '../playlist/playlist';
 import { redirectToSpotifyAuth, getAccessToken } from '../../api/spotify/spotifyAuth';
-import {createNewPlaylist, getUser, saveTrackToPlaylist, searchTracks} from "../../api/spotify/spotifyApi";
+import { getUser, saveTrackToPlaylist, searchTracks} from "../../api/spotify/spotifyApi";
 
 function App() {
     const [token, setToken] = useState(null);

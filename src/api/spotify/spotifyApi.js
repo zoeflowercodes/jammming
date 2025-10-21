@@ -98,6 +98,4 @@ export async function saveTrackToPlaylist(token, query) {
         console.error('Spotify search failed', await response.text());
         return [];
     }
-
-    const data = await response.json();
 }
