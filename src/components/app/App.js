@@ -46,7 +46,7 @@ function App() {
 
     function savePlaylist() {
         const trackCollection = playlist.tracks.map(track => track.id);
-        if (trackCollection.length != 0) {
+        if (trackCollection.length !== 0) {
             saveTrackToPlaylist(token, playlist);
         } else {
             alert("Your playlist is empty!");
